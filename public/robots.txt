@@ -1,0 +1,10 @@
+# Robots.txt — MC Transporte Executivo
+# Permite indexação completa, mas bloqueia /api/
+
+User-agent: *
+Allow: /
+
+Disallow: /api/
+Disallow: /admin/
+
+Sitemap: https://mctransporte.com.br/sitemap.xml

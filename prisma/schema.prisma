@@ -1,0 +1,33 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Avaliacao {
+  id        String   @id @default(cuid())
+  nome      String
+  nota      Int      // 1 a 5 estrelas
+  comentario String
+  servico   String?  // serviço utilizado (opcional)
+  aprovado  Boolean  @default(false) // moderação: só exibe se aprovado
+  createdAt DateTime @default(now())
+}
+
+model Mensagem {
+  id        String   @id @default(cuid())
+  nome      String
+  telefone  String
+  email     String?
+  servico   String
+  dataHora  String?
+  mensagem  String?
+  status    String   @default("nova") // nova | em_atendimento | atendida
+  createdAt DateTime @default(now())
+}
